@@ -1,0 +1,99 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        <meta name="viewport" content="width=device-width" />
+        <title>A Day in the Life of a Front End Developer</title>
+        <meta property="og:url"           content="http://www.anniwang.com" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="A Day in the Life of a Front End Developer" />
+        <meta property="og:description"   content="A Day in the Life of a Front End Developer (An-Ni Wang)" />
+        <meta property="og:image"         content="http://anniwang.com/f.png" /> 
+        <meta name="description" content="A Day in the Life of a Front End Developer (An-Ni Wang)">
+        <meta name="keywords" content="Front End Developer, Interactive Resume, HTML5 Storyboard">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='http://fonts.googleapis.com/css?family=Codystar' rel='stylesheet' type='text/css'>
+        <link rel="hortcut sicon" href="http://anniwang.com/favicon.ico" type="image/x-icon" />
+        <!-- build:css css/styles.min.css -->
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/styles.css"> 
+        <link rel="stylesheet" href="css/animation.css">       
+        <!-- endbuild -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.1/TweenMax.min.js"></script>
+
+        <!-- build:js js/main.min.js -->
+        <script src="js/main.js"></script>
+        <!-- endbuild -->
+        <script>
+            jQuery(document).ready(function($) {
+
+                    var scenes =  [
+                        {
+                            duration: 2000,
+                            sceneSelector: $('.wakeup')
+                        },
+                        {
+                            duration: 7000,
+                            sceneSelector: $('.breakfast')
+                        }
+                    ]
+
+                myDevDay.scene.initScenes(scenes);
+                    
+            });
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 9]>
+            <div class="browserupgrade">
+                <p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            </div>        
+        <![endif]-->
+        <div id="heightOnly" class="showScollBar"></div> 
+        <div id="fullpage">
+            <div class="scene wakeup">
+                <div class="window moveable" start-time="0.1" end-time="0.2" data-startTopPos="-.5" data-moveTopPos="0.6" type="top"></div>
+                <div class="closet moveable" start-time="0.1" end-time="0.2" data-startLeftPos="0.5" data-moveLeftPos="-0.6">
+                     <div class="closet-cactus moveable" start-time="0.3" end-time="0.4" data-startTopPos="-0.5" data-moveTopPos="0.5" type="top"></div>
+                    <div class="closet-cactus moveable" start-time="0.35" end-time="0.45" data-startTopPos="-0.5" data-moveTopPos="0.5" type="top"></div>   
+                </div>       
+                <div class="nightstand moveable" start-time="0.1" end-time="0.2" data-startTopPos=".5" data-moveTopPos="-1" type="top"></div>
+                <div id="alarm" class="element"></div> 
+                <div class="bed moveable" start-time="0.1" end-time="0.2" data-startLeftPos="-1" data-moveLeftPos="1"></div> 
+                <div class="scooter moveable" start-time="0.1" end-time="0.2" data-startLeftPos="0.5" data-moveLeftPos="-0.5"></div>
+            </div>
+            <div class="scene breakfast">
+                <div class="half-half moveable" start-time="0.2" end-time="0.3" data-startLeftPos="0" data-moveLeftPos="-0.25" data-startTopPos="0" data-moveTopPos="-0.1" type="topLeft"></div> 
+                <div class="butter moveable" start-time="0.2" end-time="0.3" data-startLeftPos="0" data-moveLeftPos="-0.15" data-startTopPos="0" data-moveTopPos="-0.1" type="topLeft"></div>
+                <div class="bread moveable" start-time="0.2" end-time="0.3" data-startLeftPos="0" data-moveLeftPos="0.15" data-startTopPos="0" data-moveTopPos="-0.1" type="topLeft"></div>
+                <div class="becon moveable" start-time="0.3" end-time="0.4" data-startTopPos="0" data-moveTopPos="0.5" type="top"></div>
+                <div class="egg moveable" start-time="0.3" end-time="0.4" data-startTopPos="0" data-moveTopPos="0.5" type="top"></div>
+                <div class="fork-hand moveable" start-time="0.3" end-time="0.4" data-startTopPos="0" data-moveTopPos="0.5" type="top"></div>
+                <div class="coffee-hand moveable" start-time="0.4" end-time="0.5" data-startTopPos="0" data-moveTopPos="0.5" type="top"></div>  
+                <div class="ipad moveable" start-time="0.5" end-time="0.6" data-startTopPos="1" data-moveTopPos="-0.8" type="top">
+                    <div class="screen element">
+                        <h2 id="date">Friday, December 11</h2>
+                        <div id="weather"></div>  
+                    </div>
+                    <div class="screen2 element"></div>                    
+                    <div class="ipad-frame element"></div>                   
+                </div>
+
+                <div class="index-finger moveable" start-time="0.75" end-time="0.85" data-startTopPos="1" data-moveTopPos="-0.8" type="top"></div>
+                <div class="leftpart transition moveable" start-time="0.1" end-time="0.2" data-startLeftPos="0" data-moveLeftPos="-0.5"></div> 
+                <div class="rightpart transition moveable" start-time="0.1" end-time="0.2" data-startLeftPos="0.5" data-moveLeftPos="0.5"></div> 
+            </div>
+            <div clas="scene webMagzine"></div>
+        </div>
+    </body>
+</html>
+
+
+
