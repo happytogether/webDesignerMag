@@ -25,30 +25,6 @@
         <link rel="stylesheet" href="css/animation.css">       
         <!-- endbuild -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.1/TweenMax.min.js"></script>
-
-        <!-- build:js js/main.min.js -->
-        <script src="js/main.js"></script>
-        <!-- endbuild -->
-        <script>
-            jQuery(document).ready(function($) {
-
-                    var scenes =  [
-                        {
-                            duration: 2000,
-                            sceneSelector: $('.wakeup')
-                        },
-                        {
-                            duration: 7000,
-                            sceneSelector: $('.breakfast')
-                        }
-                    ]
-
-                myDevDay.scene.initScenes(scenes);
-                    
-            });
-        </script>
     </head>
     <body>
         <!--[if lt IE 9]>
@@ -56,28 +32,33 @@
                 <p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
             </div>        
         <![endif]-->
-        <div id="heightOnly" class="showScollBar"></div> 
+        <div class="fakeheight"></div>  
         <div id="fullpage">
-            <div class="scene wakeup">
-                <div class="window moveable" start-time="0.1" end-time="0.2" data-startTopPos="-.5" data-moveTopPos="0.6" type="top"></div>
-                <div class="closet moveable" start-time="0.1" end-time="0.2" data-startLeftPos="0.5" data-moveLeftPos="-0.6">
-                     <div class="closet-cactus moveable" start-time="0.3" end-time="0.4" data-startTopPos="-0.5" data-moveTopPos="0.5" type="top"></div>
-                    <div class="closet-cactus moveable" start-time="0.35" end-time="0.45" data-startTopPos="-0.5" data-moveTopPos="0.5" type="top"></div>   
+            <div class="scene" id="wakeup">
+                <div class="window moveable" start-time="0.1" end-time="0.2" startTopPos="-.5" moveTopPos="0.6" type="top"></div>
+                <div class="closet moveable" start-time="0.1" end-time="0.2" startLeftPos="0.5" moveLeftPos="-0.6">
+                     <div class="closet-cactus moveable" start-time="0.3" end-time="0.4" startTopPos="-0.5" moveTopPos="0.5" type="top"></div>
+                    <div class="closet-cactus moveable" start-time="0.35" end-time="0.45" startTopPos="-0.5" moveTopPos="0.5" type="top"></div>   
                 </div>       
-                <div class="nightstand moveable" start-time="0.1" end-time="0.2" data-startTopPos=".5" data-moveTopPos="-1" type="top"></div>
-                <div id="alarm" class="element"></div> 
-                <div class="bed moveable" start-time="0.1" end-time="0.2" data-startLeftPos="-1" data-moveLeftPos="1"></div> 
-                <div class="scooter moveable" start-time="0.1" end-time="0.2" data-startLeftPos="0.5" data-moveLeftPos="-0.5"></div>
+                <div class="nightstand moveable" start-time="0.1" end-time="0.2" startTopPos=".5" moveTopPos="-1" type="top"></div>
+                <div class="bed moveable" start-time="0.1" end-time="0.2" startLeftPos="-1" moveLeftPos="1"></div> 
+                <div class="scooter moveable" start-time="0.1" end-time="0.2" startLeftPos="0.5" moveLeftPos="-0.5"></div>
+                <div class="clock">
+                    <h1><span>Z</span> <span>Z</span> <span>Z</span>, Sleep in Bed for few more mins</h1> 
+                    <div class="clock-hand short-hand"></div>
+                    <div class="clock-hand long-hand"></div>
+                    <div class="clock-hand clock-middle-circle"></div>   
+                </div>
             </div>
-            <div class="scene breakfast">
-                <div class="half-half moveable" start-time="0.2" end-time="0.3" data-startLeftPos="0" data-moveLeftPos="-0.25" data-startTopPos="0" data-moveTopPos="-0.1" type="topLeft"></div> 
-                <div class="butter moveable" start-time="0.2" end-time="0.3" data-startLeftPos="0" data-moveLeftPos="-0.15" data-startTopPos="0" data-moveTopPos="-0.1" type="topLeft"></div>
-                <div class="bread moveable" start-time="0.2" end-time="0.3" data-startLeftPos="0" data-moveLeftPos="0.15" data-startTopPos="0" data-moveTopPos="-0.1" type="topLeft"></div>
-                <div class="becon moveable" start-time="0.3" end-time="0.4" data-startTopPos="0" data-moveTopPos="0.5" type="top"></div>
-                <div class="egg moveable" start-time="0.3" end-time="0.4" data-startTopPos="0" data-moveTopPos="0.5" type="top"></div>
-                <div class="fork-hand moveable" start-time="0.3" end-time="0.4" data-startTopPos="0" data-moveTopPos="0.5" type="top"></div>
-                <div class="coffee-hand moveable" start-time="0.4" end-time="0.5" data-startTopPos="0" data-moveTopPos="0.5" type="top"></div>  
-                <div class="ipad moveable" start-time="0.5" end-time="0.6" data-startTopPos="1" data-moveTopPos="-0.8" type="top">
+            <div class="scene" id="breakfast">
+                <div class="half-half moveable" start-time="0.2" end-time="0.3" startLeftPos="0" moveLeftPos="-0.25" startTopPos="0" moveTopPos="-0.1" type="topLeft"></div> 
+                <div class="butter moveable" start-time="0.2" end-time="0.3" startLeftPos="0" moveLeftPos="-0.15" startTopPos="0" moveTopPos="-0.1" type="topLeft"></div>
+                <div class="bread moveable" start-time="0.2" end-time="0.3" startLeftPos="0" moveLeftPos="0.15" startTopPos="0" moveTopPos="-0.1" type="topLeft"></div>
+                <div class="becon moveable" start-time="0.3" end-time="0.4" startTopPos="0" moveTopPos="0.5" type="top"></div>
+                <div class="egg moveable" start-time="0.3" end-time="0.4" startTopPos="0" moveTopPos="0.5" type="top"></div>
+                <div class="fork-hand moveable" start-time="0.3" end-time="0.4" startTopPos="0" moveTopPos="0.5" type="top"></div>
+                <div class="coffee-hand moveable" start-time="0.4" end-time="0.5" startTopPos="0" moveTopPos="0.5" type="top"></div>  
+                <div class="ipad moveable" start-time="0.5" end-time="0.6" startTopPos="1" moveTopPos="-0.8" type="top">
                     <div class="screen element">
                         <h2 id="date">Friday, December 11</h2>
                         <div id="weather"></div>  
@@ -86,12 +67,41 @@
                     <div class="ipad-frame element"></div>                   
                 </div>
 
-                <div class="index-finger moveable" start-time="0.75" end-time="0.85" data-startTopPos="1" data-moveTopPos="-0.8" type="top"></div>
-                <div class="leftpart transition moveable" start-time="0.1" end-time="0.2" data-startLeftPos="0" data-moveLeftPos="-0.5"></div> 
-                <div class="rightpart transition moveable" start-time="0.1" end-time="0.2" data-startLeftPos="0.5" data-moveLeftPos="0.5"></div> 
+                <div class="index-finger moveable" start-time="0.75" end-time="0.85" startTopPos="1" moveTopPos="-0.8" type="top"></div>
+                <div class="leftpart transition moveable" start-time="0.1" end-time="0.2" startLeftPos="0" moveLeftPos="-0.5"></div> 
+                <div class="rightpart transition moveable" start-time="0.1" end-time="0.2" startLeftPos="0.5" moveLeftPos="0.5"></div> 
+                <div class="clock">
+                    <h1>Eat Breakfast and Check Emails</h1> 
+                    <div class="clock-hand short-hand"></div>
+                    <div class="clock-hand long-hand"></div>
+                    <div class="clock-hand clock-middle-circle"></div>  
+                </div> 
             </div>
-            <div clas="scene webMagzine"></div>
         </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.1/TweenMax.min.js"></script>
+        <script src="js/animate_scene.js"></script>
+        <script>
+            jQuery(document).ready(function($) {
+
+                var scenes =  [
+                    {
+                        duration: 2000,
+                        clockDuration: 120, //min to degree (20 mins)
+                        sceneSelector: $('#wakeup')
+                    },
+                    {
+                        duration: 7000,
+                        clockDuration: 180, //min to degree (30 mins)
+                        sceneSelector: $('#breakfast')
+                    }
+                ];
+                var initTime = 2520; //wake up time 7:00AM (360x7), min to degree
+
+                myDevDay.scene.initScenes(scenes, initTime);
+                    
+            });
+        </script>
     </body>
 </html>
 

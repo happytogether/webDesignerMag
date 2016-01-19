@@ -3,7 +3,7 @@ var myDevDay = myDevDay || {};
     
 myDevDay.scene = {
        
-    initScenes: function (scenes) {
+    initScenes: function (scenes, initTime) {
         
         var lex = this
         ,W = $(window).width()
@@ -11,6 +11,7 @@ myDevDay.scene = {
         ,scrollY = 0
         ,allscenes = $('.scene')
         ,sceneDurationArr = [0]
+        ,clockDurationArr = [initTime] //wake up time, min to degree
         ,scenesArr = [];
   
         lex.getSceneHeight = function () {
@@ -18,7 +19,7 @@ myDevDay.scene = {
             for ( var i = 0; i < scenes.length; i++ ) {
                 sceneHeight += scenes[i].duration;
             }
-            $('#heightOnly').css('height', sceneHeight + 'px');
+            $('.fakeheight').css('height', sceneHeight + 'px');
         };
 
         lex.resize = function () {
@@ -59,15 +60,20 @@ myDevDay.scene = {
 
         };
         
-        lex.setupSecneDuration = function (duration) { 
+        lex.setupSecneDuration = function (duration, cDuration) { 
             var yPos = 0;
+            var clockDuration = 0;
 
             for ( var i = 0; i < sceneDurationArr.length; i++ ) {
                 yPos = sceneDurationArr[i];
+                clockDuration = clockDurationArr[i];
             }
 
             yPos += duration;
+            clockDuration += cDuration;
             sceneDurationArr.push(yPos);
+            clockDurationArr.push(clockDuration);
+            console.log(clockDurationArr);
         };
 
         lex.createSceneObjects = function () {
@@ -75,8 +81,8 @@ myDevDay.scene = {
             for ( var i = 0; i < scenes.length; i++ ) {
             
                 var duration = scenes[i].duration;
-                
-                this.setupSecneDuration(duration);
+                var clockDuration = scenes[i].clockDuration;
+                this.setupSecneDuration(duration, clockDuration);
                 s =  new scene(i);
                 scenesArr.push(s);
 
@@ -105,7 +111,6 @@ myDevDay.scene = {
             lex.sceneSelector = scenes[index].sceneSelector;
             lex.duration = scenes[index].duration;
             lex.clockDuration = scenes[index].clockDuration;            
-            
             lex.startPoint = sceneDurationArr[lex.sceneIndex];
             lex.endPoint = sceneDurationArr[lex.sceneIndex + 1];
     
@@ -115,10 +120,19 @@ myDevDay.scene = {
                 scene.removeClass('bring-to-back').addClass('bring-to-front');
             };
 
+            lex.updateClockTime =  function (time, duration) {
+
+                TweenMax.to('.scene .clock .long-hand', duration, {rotation: time}); 
+                TweenMax.to('.scene .clock .short-hand', duration, {rotation:time/12});
+
+            };
+
+
             lex.animation = function () {
 
                 if (scrollY > lex.startPoint && scrollY < lex.endPoint) {
-                    
+                    lex.currentClock = clockDurationArr[lex.sceneIndex] + ((scrollY - lex.startPoint) / lex.duration)*lex.clockDuration;
+                    lex.updateClockTime(lex.currentClock, 2);
                     lex.showCurrentScene(lex.sceneSelector);
                     lex.moveableElement(lex.sceneSelector, lex.startPoint, lex.endPoint, lex.duration);
                 }
@@ -135,19 +149,10 @@ myDevDay.scene = {
                     var currentScale;
                     var currentOpacity;
                     var elements = element.find(".moveable:eq(" + i + ")");
-                    
-                    var elementLeftStart = element.find(".moveable:eq(" + i + ")").attr('data-left-start');
-                    var elementLeftEnd = element.find(".moveable:eq(" + i + ")").attr('data-left-end');
-                    var elementTopStart = element.find(".moveable:eq(" + i + ")").attr('data-top-start');            
-                    var elementTopEnd = element.find(".moveable:eq(" + i + ")").attr('data-top-end');
-                    
-                    var elementStartPos = element.find(".moveable:eq(" + i + ")").attr('data-startPos');  
-
-                    var elementStartLeftPos = element.find(".moveable:eq(" + i + ")").attr('data-startLeftPos');
-                    var elementStartTopPos = element.find(".moveable:eq(" + i + ")").attr('data-startTopPos');
-
-                    var elementEndLeftPos = element.find(".moveable:eq(" + i + ")").attr('data-moveLeftPos');
-                    var elementEndTopPos = element.find(".moveable:eq(" + i + ")").attr('data-moveTopPos');
+                    var elementStartLeftPos = element.find(".moveable:eq(" + i + ")").attr('startLeftPos');
+                    var elementStartTopPos = element.find(".moveable:eq(" + i + ")").attr('startTopPos');
+                    var elementEndLeftPos = element.find(".moveable:eq(" + i + ")").attr('moveLeftPos');
+                    var elementEndTopPos = element.find(".moveable:eq(" + i + ")").attr('moveTopPos');
                     var elementStartTime = element.find(".moveable:eq(" + i + ")").attr('start-time');
                     var elementEndTime = element.find(".moveable:eq(" + i + ")").attr('end-time');
                     var elementRotation = element.find(".moveable:eq(" + i + ")").attr('rotation');
