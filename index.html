@@ -9,20 +9,12 @@
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
         <title>A Day in the Life of a Front End Developer</title>
-        <meta property="og:url"           content="http://www.anniwang.com" />
-        <meta property="og:type"          content="website" />
-        <meta property="og:title"         content="A Day in the Life of a Front End Developer" />
-        <meta property="og:description"   content="A Day in the Life of a Front End Developer (An-Ni Wang)" />
-        <meta property="og:image"         content="http://anniwang.com/f.png" /> 
-        <meta name="description" content="A Day in the Life of a Front End Developer (An-Ni Wang)">
-        <meta name="keywords" content="Front End Developer, Interactive Resume, HTML5 Storyboard">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href='http://fonts.googleapis.com/css?family=Codystar' rel='stylesheet' type='text/css'>
         <link rel="hortcut sicon" href="http://anniwang.com/favicon.ico" type="image/x-icon" />
         <!-- build:css css/styles.min.css -->
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/styles.css"> 
-        <link rel="stylesheet" href="css/animation.css">       
         <!-- endbuild -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     </head>
@@ -38,23 +30,23 @@
                 <div class="window moveable" start-time="0.1" end-time="0.2" startTopPos="-.5" moveTopPos="0.6" type="top"></div>
                 <div class="closet moveable" start-time="0.1" end-time="0.2" startLeftPos="0.5" moveLeftPos="-0.6">
                      <div class="closet-cactus moveable" start-time="0.3" end-time="0.4" startTopPos="-0.5" moveTopPos="0.5" type="top"></div>
-                    <div class="closet-cactus moveable" start-time="0.35" end-time="0.45" startTopPos="-0.5" moveTopPos="0.5" type="top"></div>   
+                    <div class="closet-cactus moveable" start-time="0.35" end-time="0.45" startTopPos="-0.5" moveTopPos="0.5" type="top"></div>    
                 </div>       
                 <div class="nightstand moveable" start-time="0.1" end-time="0.2" startTopPos=".5" moveTopPos="-1" type="top"></div>
                 <div class="bed moveable" start-time="0.1" end-time="0.2" startLeftPos="-1" moveLeftPos="1"></div> 
-                <div class="scooter moveable" start-time="0.1" end-time="0.2" startLeftPos="0.5" moveLeftPos="-0.5"></div>
+                <div id="alarm" class="moveable" start-time="0.1" end-time="0.3" startTopPos="0" moveTopPos="0.5" type="top"></div>
                 <div class="clock">
                     <h1><span>Z</span> <span>Z</span> <span>Z</span>, Sleep in Bed for few more mins</h1> 
                     <div class="clock-hand short-hand"></div>
                     <div class="clock-hand long-hand"></div>
                     <div class="clock-hand clock-middle-circle"></div>   
                 </div>
-            </div>
+            </div> 
             <div class="scene" id="breakfast">
                 <div class="half-half moveable" start-time="0.2" end-time="0.3" startLeftPos="0" moveLeftPos="-0.25" startTopPos="0" moveTopPos="-0.1" type="topLeft"></div> 
                 <div class="butter moveable" start-time="0.2" end-time="0.3" startLeftPos="0" moveLeftPos="-0.15" startTopPos="0" moveTopPos="-0.1" type="topLeft"></div>
                 <div class="bread moveable" start-time="0.2" end-time="0.3" startLeftPos="0" moveLeftPos="0.15" startTopPos="0" moveTopPos="-0.1" type="topLeft"></div>
-                <div class="becon moveable" start-time="0.3" end-time="0.4" startTopPos="0" moveTopPos="0.5" type="top"></div>
+                <div class="bacon moveable" start-time="0.3" end-time="0.4" startTopPos="0" moveTopPos="0.5" type="top"></div>
                 <div class="egg moveable" start-time="0.3" end-time="0.4" startTopPos="0" moveTopPos="0.5" type="top"></div>
                 <div class="fork-hand moveable" start-time="0.3" end-time="0.4" startTopPos="0" moveTopPos="0.5" type="top"></div>
                 <div class="coffee-hand moveable" start-time="0.4" end-time="0.5" startTopPos="0" moveTopPos="0.5" type="top"></div>  

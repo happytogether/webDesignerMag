@@ -73,7 +73,6 @@ myDevDay.scene = {
             clockDuration += cDuration;
             sceneDurationArr.push(yPos);
             clockDurationArr.push(clockDuration);
-            console.log(clockDurationArr);
         };
 
         lex.createSceneObjects = function () {
